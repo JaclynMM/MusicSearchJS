@@ -1,26 +1,73 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Grid, Jumbotron } from 'react-bootstrap';
+
+import Navbar from './components/layout/Navbar';
+import Index from './components/layout/Index';
+import { Provider } from './context';
+
+// import SearchForm from './components/SearchForm';
+// import Results from './components/Results';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider>
+        <Router>
+          <div>
+            <Navbar />
+
+            <Jumbotron>
+              <Grid>
+                <p>Do I want something here?</p>
+              </Grid>
+            </Jumbotron>
+            
+            <div className="containter">
+              <Switch>
+                <Route exact path="/" component={Index} />
+              </Switch>
+              {/* <h1>Search Musicians</h1>
+              <p></p>
+              <SearchForm />
+              <br></br>
+              <Results /> */}
+            </div>
+
+            {/* <div className="containter">
+              <h1>Search Musicians</h1>
+              <p></p>
+              <SearchForm />
+              <br></br>
+              <Results />
+            </div>
+
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <Grid>
+              <h1>Search Bands</h1>
+              <p></p>
+              <SearchForm />
+              <br></br>
+              <Results />
+            </Grid>
+
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <Grid>
+              <h1>Search Albums</h1>
+              <p></p>
+              <SearchForm />
+              <br></br>
+              <Results />
+            </Grid> */}
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
