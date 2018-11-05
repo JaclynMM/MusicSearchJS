@@ -12,16 +12,25 @@ export class Provider extends Component {
     componentDidMount () {
         fetch('http://127.0.0.1:8000/')
         .then( results => {
-            return results.json();
-        }).then(results => {
             console.log(results)
+            return results.json();
+        }).then(data => {
+            let artist_list = data.results.map((list) => {
+                return (
+                    <div key = {list.results}>
+                    
+                    </div>
+                )
+            })
         })
+        this.setState({artist_list: artist_list});
+        console.log("state", this.state.list)
     }
 
     render () {
         return (
             <Context.Provider value={this.state}>
-                {this.props.children}
+                {this.props.list}
             </Context.Provider>
         )
     }
