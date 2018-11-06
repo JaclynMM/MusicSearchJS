@@ -4,6 +4,7 @@ import { Grid, Jumbotron } from 'react-bootstrap';
 
 import Navbar from './components/layout/Navbar';
 import Index from './components/layout/Index';
+
 import { Provider } from './context';
 
 // import SearchForm from './components/SearchForm';
@@ -17,11 +18,11 @@ class App extends Component {
           <div>
             <Navbar />
 
-            <Jumbotron>
+            {/* <Jumbotron>
               <Grid>
                 <p>Do I want something here?</p>
               </Grid>
-            </Jumbotron>
+            </Jumbotron> */}
             
             <div className="containter">
               <Switch>
