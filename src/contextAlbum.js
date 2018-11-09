@@ -7,40 +7,29 @@ const Context = React.createContext();
 // create the provider
 export class Provider extends Component {
     state = {
-        artist_list: [],
-        heading: 'Artist Results'
+        album_list: [],
+        heading: 'Album Results'
     };
 
     componentDidMount() {
         axios
-            .get(`http://127.0.0.1:8000/Artist/`)
+            .get(`http://127.0.0.1:8000/Album/`)
             .then(res => {
                 console.log(res.data);
-                this.setState({artist_list: res.data});
+                this.setState({album_list: res.data});
             })
             .catch(err => console.log(err))
     }
 
     render () {
         return (
-            <Context.Provider value={this.state}>
+            <AlbumContext.Provider value={this.state}>
                 {this.props.children}
-            </Context.Provider>
+            </AlbumContext.Provider>
         )
     }
     
 }
 
 
-
-/**
- * fetch('http://127.0.0.1:8000/Artist', {
- *   mode: 'POST',
- *   body: JSON.stringify(this.state),
- *   headers: {
- *     'Content-Type': 'application/json'
- *   })
- * })
- */
-
-export const Consumer = Context.Consumer;
+export const AlbumConsumer = AlbumContext.Consumer;

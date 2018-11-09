@@ -1,33 +1,24 @@
-import React, { Component } from 'react';
-// import { Consumer } from '../../context';
+import React from 'react';
 
-class Bands extends Component {
-    constructor() {
-        super()
-        this.state = {
-            bands: {name: "THE BAND"},
-        }
 
-    }
+ const Bands = (props) => {
+    const { members, name } = props.artist;
+    console.log(props);
 
-    componentDidMount () {
-        fetch('http://127.0.0.1:8000/Band/')
-        .then( results => {
-            return results.json();
-        }).then(results => {
-            console.log(results)
-        })
-    }
-
-    render () {
-        return (
-            <div>
-                <h1>Bands</h1>
-                {this.state.name}
+    return (
+        <div className="col-md-8 text-center mx-auto">
+            <div className="card mb-4 shadow-sm">
+                <div className="card-body">
+                    <h5>{name} {members}</h5>
+                    <p className="card-text">
+                        <strong><i className="fas fa-"></i> Name</strong>: {name}
+                        {/* <br></br>
+                        <strong><i className="fab fa-"></i> Members</strong>: {members} */}
+                    </p>
+                </div>
             </div>
-
-        );
-    }
-} 
+        </div>
+    )
+}
 
 export default Bands;

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Grid, Jumbotron } from 'react-bootstrap';
+// import { Grid, Jumbotron } from 'react-bootstrap';
 
 import Navbar from './components/layout/Navbar';
 import Index from './components/layout/Index';
 
 import { Provider } from './context';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faStroopwafel)
 
 // import SearchForm from './components/SearchForm';
 // import Results from './components/Results';
@@ -69,6 +74,26 @@ class App extends Component {
           </div>
         </Router>
       </Provider>
+
+      // <Provider>
+      //   <Router>
+      //     <div>
+      //       <Navbar />
+
+      //       {/* <Jumbotron>
+      //         <Grid>
+      //           <p>Do I want something here?</p>
+      //         </Grid>
+      //       </Jumbotron> */}
+            
+      //       <div className="containter">
+      //         <Switch>
+      //           <Route exact path="/" component={Index} />
+      //         </Switch>
+      //       </div>
+      //     </div>
+      //   </Router>
+      // </Provider>
     );
   }
 }
