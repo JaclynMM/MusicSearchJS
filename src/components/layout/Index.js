@@ -10,7 +10,7 @@ import Results from '../Results';
 const Index = () => {
     return (
         <React.Fragment>
-            <h1>Search Musicians</h1>
+            <h1>Search Artists</h1>
             <p></p>
             <SearchForm />
             <br></br>
@@ -21,7 +21,7 @@ const Index = () => {
             <br></br>
             <br></br>
 
-            <h1>Search Bands</h1>
+            {/* <h1>Search Bands</h1>
             <p></p>
             <SearchForm />
             <br></br>
@@ -37,7 +37,7 @@ const Index = () => {
             <SearchForm />
             <br></br>
             <Results />
-            <Album />
+            <Album /> */}
 
 
         </React.Fragment>

@@ -7,7 +7,7 @@ class Album extends Component {
 
     render () {
         return (
-            <AlbumConsumer>
+            <Consumer>
                 {value => {
                     const { album_list, heading } = value;
                     // console.log(value);
@@ -23,7 +23,7 @@ class Album extends Component {
                         </React.Fragment>
                     )
                 }}
-            </AlbumConsumer>
+            </Consumer>
 
         );
     }

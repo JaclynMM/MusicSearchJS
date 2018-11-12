@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
 import Index from './components/layout/Index';
+import SearchForm from './components/SearchForm';
+// import Results from './components/Results';
+import Details from './components/bands/Details';
+
 
 import { Provider } from './context';
 
@@ -12,8 +16,6 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faStroopwafel)
 
-// import SearchForm from './components/SearchForm';
-// import Results from './components/Results';
 
 class App extends Component {
   render() {
@@ -32,12 +34,15 @@ class App extends Component {
             <div className="containter">
               <Switch>
                 <Route exact path="/" component={Index} />
+                <Route exact path="http://127.0.0.1:8000/bands/:id" component={Details} />
               </Switch>
-              {/* <h1>Search Musicians</h1>
+              <h1>Search Musicians</h1>
               <p></p>
-              <SearchForm />
+              {/* <SearchForm/> */}
+              <SearchForm onSearch={this}/>
+
               <br></br>
-              <Results /> */}
+              {/* <Results /> */}
             </div>
 
             {/* <div className="containter">

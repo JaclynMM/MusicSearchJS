@@ -9,11 +9,11 @@ class Band extends Component {
         return (
             <Consumer>
                 {value => {
-                    const { band_list } = value;
-                    // console.log(value);
+                    const { band_list, heading } = value;
+                    // console.log(value)
                     return (
                         <React.Fragment>
-                            <h3 className="text-center mb-4">Band Results</h3>
+                            <h3 className="text-center mb-4"> { heading }</h3>
 
                             <div className="row">
                                 {band_list.map(band => (

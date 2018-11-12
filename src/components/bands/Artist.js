@@ -2,24 +2,28 @@ import React, { Component } from 'react';
 import { Consumer } from '../../context';
 
 import Artists from '../bands/Artists.js'
+import Axios from 'axios';
 
 class Artist extends Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         artist: {name: "THE BAND"},
-    //     }
+    constructor(props) {
+        super(props)
+        this.state = {
+            artist: {name: "THE BAND"},
+        }
 
-    // }
+    }
 
-    // componentDidMount () {
-    //     fetch('http://127.0.0.1:8000/Artist/')
-    //     .then( results => {
-    //         return results.json();
-    //     }).then(results => {
-    //         console.log(results)
-    //     })
-    // }
+    componentDidMount () {
+    }
+
+    performSearch = (query) => {
+        Axios.get(`http://127.0.0.1:8000/Artist/search?q=${query}`)
+        .then( results => {
+            return results.json();
+        }).then(results => {
+            console.log(results)
+        })
+    }
 
     render () {
         return (
