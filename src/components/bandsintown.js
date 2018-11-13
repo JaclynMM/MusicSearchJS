@@ -11,16 +11,17 @@ class Bandsintown extends Component {
     // e.preventDefault();
 
     axios
-      .get(`https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0/artists/{artistname}/events
-        &apikey=${process.env.REACT_APP_BIT_KEY}`
-        )
-        
-      .then(results => {
-        console.log(results)
-        this.setState({ artist_id: 'artist_id' });
+      .get(`https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0?apikey=6f880160bae94cfaeba7644d862d324d`)
+        .then(response => {
+        // console.log(response)
+          this.setState({ 
+            artist_id: response.data.artist_id
+          });
+        })
+      .catch(function (error) {
+        console.log(error)
       })
-      .catch(err => console.log(err));
-  };
+    };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -42,8 +43,8 @@ class Bandsintown extends Component {
                   <input
                     type="text"
                     className="form-control form-control-lg"
-                    placeholder="Artist name..."
-                    name="Artist"
+                    placeholder="Event details..."
+                    name="Event"
                     value={this.state.artist_id}
                     onChange={this.onChange}
                   />
@@ -65,63 +66,43 @@ class Bandsintown extends Component {
 
 export default Bandsintown;
 
-// export default class SearchForm extends Component {
+
+// export default class Bandsintown extends Component {
   
-//   state = {
-//     searchText: ''
+//   constructor() {
+//     super();
+//     this.state = {
+//       artist_id: [],
+//       datetime: [],
+//     };
+//   } 
+
+//   componentDidMount() {
+//     axios.get(`https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0/artists/{artistname}/events
+//             &apikey=${process.env.REACT_APP_BIT_KEY}`)
+//           .then(results => {
+//             console.log(results)
+//             this.setState({ artist_id: 'artist_id' });
+          
+//     })
+    
+//       .catch(error => {
+//         console.log('Error fetching and parsing data', error);
+//       });
 //   }
-  
-//   onSearchChange = e => {
-//     this.setState({ searchText: e.target.value });
-//   }
-  
-//   handleSubmit = e => {
-//     e.preventDefault();
-//     this.props.onSearch(this.query.value);
-//     e.currentTarget.reset();
-//   }
-  
-//   render() {  
+
+//   render() { 
+//     console.log(this.state.artist_id);
 //     return (
-//       <form className="search-form" onSubmit={this.handleSubmit} >
-//         <label className="is-hidden" htmlFor="search"></label>
-//         <input type="text" 
-//                onChange={this.onSearchChange}
-//                name="artist name" 
-//                ref={(input) => this.query = input}
-//                value={this.state.artist_name}
-//                placeholder="Search..." />
-//         <button type="submit" id="submit" className="search-button"><i className="material-icons icn-search">search</i></button>
-//       </form>      
+//       <div>
+//         <div className="main-header">
+//           <div className="inner">
+//             <h1 className="main-title">Artist Search</h1>
+//           </div>   
+//         </div>    
+//         <div className="main-content">
+//         </div>
+//       </div>
 //     );
 //   }
 // }
-
-// //create the context
-// const Context = React.createContext();
-
-// // create the provider
-// export class Provider extends Component {
-//     state = {
-//         search_list: []
-//     };
-
-//     componentDidMount () {
-//         fetch('https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0&apikey=${process.env.REACT_APP_BIT_KEY}')
-//         .then( results => {
-//             return results.json();
-//         }).then(results => {
-//             console.log(results)
-//         })
-//     }
-
-//     render () {
-//         return (
-//             <Context.Provider value={this.state}>
-//                 {this.props.children}
-//             </Context.Provider>
-//         )
-//     }
-// }
-
-// export const Consumer = Context.Consumer;

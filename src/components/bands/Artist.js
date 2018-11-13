@@ -34,8 +34,8 @@ class Artist extends Component {
                             <h3 className="text-center mb-4">{heading}</h3>
 
                             <div className="row">
-                                {artist_list.map(artist => (
-                                    <Artists key={artist.artist_id} artist={artist} />
+                                {artist_list.map((artist, index) => (
+                                    <Artists key={index} artist={artist} />
                                 ))}
                             </div>
                         </React.Fragment>
