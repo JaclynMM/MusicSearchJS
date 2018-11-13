@@ -26,6 +26,8 @@ class Search extends Component {
   };
 
   render() {
+    console.log(this.state.artists);
+
     return (
       <Consumer>
         {value => {
@@ -49,22 +51,16 @@ class Search extends Component {
                 </div>
                 <button
                   className="btn btn-primary btn-lg btn-block mb-5"
-                  type="submit"
-                >
-                  Get Artist Details
+                  type="submit">
+                    Get Artist Details
                 </button>
-                {/* <div>
-                  <ol>
-                    {this.state.Artist((result, i) => (
-                      <li key={i}>{result.text}</li>
-                    ))}
-                  </ol>
-                </div> */}
               </form>
             </div>
           );
         }}
       </Consumer>
+
+      
     );
   }
 }

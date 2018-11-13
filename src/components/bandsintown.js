@@ -4,7 +4,7 @@ import { Consumer } from '../context';
 
 class Bandsintown extends Component {
   state = {
-    Event: ''
+    Event: []
   };
 
   findSchedule = (dispatch, e) => {
@@ -15,7 +15,7 @@ class Bandsintown extends Component {
         .then(response => {
         // console.log(response)
           this.setState({ 
-            artist_id: response.data.artist_id
+            Event: response.data.artist_id
           });
         })
       .catch(function (error) {
