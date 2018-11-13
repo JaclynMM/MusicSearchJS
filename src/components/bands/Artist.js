@@ -13,11 +13,9 @@ class Artist extends Component {
 
     }
 
-    componentDidMount () {
-    }
 
-    performSearch = (query) => {
-        Axios.get(`http://127.0.0.1:8000/Artist/search?q=${query}`)
+    performSearch = () => {
+        Axios.get('http://127.0.0.1:8000/Artist/')
         .then( results => {
             return results.json();
         }).then(results => {

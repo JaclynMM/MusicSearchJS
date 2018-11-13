@@ -8,7 +8,7 @@ const Context = React.createContext();
 export class Provider extends Component {
     state = {
         artist_list: [],
-        heading: 'Artist Results'
+        heading: 'Full List of Artists'
     };
 
     componentDidMount() {

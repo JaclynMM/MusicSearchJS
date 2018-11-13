@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Consumer } from '../context';
 
-class Search extends Component {
+class Bandsintown extends Component {
   state = {
-    Artist: ''
+    Event: ''
   };
 
-  findArtist = (dispatch, e) => {
-    
-    e.preventDefault();
-    console.log(this.state)
+  findSchedule = (dispatch, e) => {
+    // e.preventDefault();
 
     axios
-      .get(`http://127.0.0.1:8000/artist-search/?q=${this.state.Artist}`)
+      .get(`https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0/artists/{artistname}/events
+        &apikey=${process.env.REACT_APP_BIT_KEY}`
+        )
+        
       .then(results => {
         console.log(results)
-        this.setState({ artist: '' });
+        this.setState({ artist_id: 'artist_id' });
       })
       .catch(err => console.log(err));
   };
@@ -33,17 +34,17 @@ class Search extends Component {
           return (
             <div className="card card-body mb-4 p-4">
               <h1 className="display-6 text-center">
-                Search For An Artist
+                When can I see them live?
               </h1>
-              <p className="lead text-center">with Details</p>
-              <form onSubmit={this.findArtist.bind(this, dispatch)}>
+              <p className="lead text-center">Search BandsInTown</p>
+              <form onSubmit={this.findSchedule.bind(this, dispatch)}>
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Artist name..."
                     name="Artist"
-                    value={this.state.artist}
+                    value={this.state.artist_id}
                     onChange={this.onChange}
                   />
                 </div>
@@ -51,15 +52,8 @@ class Search extends Component {
                   className="btn btn-primary btn-lg btn-block mb-5"
                   type="submit"
                 >
-                  Get Artist Details
+                  Get Event Details
                 </button>
-                {/* <div>
-                  <ol>
-                    {this.state.Artist((result, i) => (
-                      <li key={i}>{result.text}</li>
-                    ))}
-                  </ol>
-                </div> */}
               </form>
             </div>
           );
@@ -69,7 +63,7 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default Bandsintown;
 
 // export default class SearchForm extends Component {
   
@@ -102,3 +96,32 @@ export default Search;
 //     );
 //   }
 // }
+
+// //create the context
+// const Context = React.createContext();
+
+// // create the provider
+// export class Provider extends Component {
+//     state = {
+//         search_list: []
+//     };
+
+//     componentDidMount () {
+//         fetch('https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0&apikey=${process.env.REACT_APP_BIT_KEY}')
+//         .then( results => {
+//             return results.json();
+//         }).then(results => {
+//             console.log(results)
+//         })
+//     }
+
+//     render () {
+//         return (
+//             <Context.Provider value={this.state}>
+//                 {this.props.children}
+//             </Context.Provider>
+//         )
+//     }
+// }
+
+// export const Consumer = Context.Consumer;

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
 import Index from './components/layout/Index';
-import SearchForm from './components/SearchForm';
+// import SearchForm from './components/SearchForm';
 // import Results from './components/Results';
 import Details from './components/bands/Details';
 
@@ -34,12 +34,10 @@ class App extends Component {
             <div className="containter">
               <Switch>
                 <Route exact path="/" component={Index} />
-                <Route exact path="http://127.0.0.1:8000/bands/:id" component={Details} />
+                <Route exact path="http://127.0.0.1:8000/artist/:id" component={Details} />
               </Switch>
-              <h1>Search Musicians</h1>
-              <p></p>
               {/* <SearchForm/> */}
-              <SearchForm onSearch={this}/>
+              {/* <SearchForm onSearch={this}/> */}
 
               <br></br>
               {/* <Results /> */}
