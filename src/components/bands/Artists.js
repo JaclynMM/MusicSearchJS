@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
                         <strong><i className="fab fa-twitter"></i> Twitter</strong>: {twitter_id}
                     </p> */}
 
-                    <Link to={`/search_artist/${props.artist.artist_id}`} className="btn btn-dark btn-block">
+                    <Link to={`/artist_detail/${props.artist.id}`} className="btn btn-dark btn-block">
                         <i className="fas fa-chevron-right"> Find out more </i>
                         {/* {artist.id} */}
                     </Link>

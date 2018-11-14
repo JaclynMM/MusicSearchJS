@@ -34,7 +34,8 @@ class App extends Component {
             <div className="containter">
               <Switch>
                 <Route exact path="/" component={Index} />
-                <Route exact path="http://127.0.0.1:8000/artist/:id" component={Details} />
+                <Route exact path="/artist_detail/:id" component={Details} />
+                {/* <Route exact path="/artist_detail/:id" component={Bandsintown} /> */}
               </Switch>
               {/* <SearchForm/> */}
               {/* <SearchForm onSearch={this}/> */}

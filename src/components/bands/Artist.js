@@ -10,9 +10,7 @@ class Artist extends Component {
         this.state = {
             artist: {name: "THE BAND"},
         }
-
     }
-
 
     performSearch = () => {
         Axios.get('http://127.0.0.1:8000/Artist/')

@@ -4,25 +4,28 @@ import { Consumer } from '../context';
 
 class Search extends Component {
   state = {
-    Artist: ''
+    artist: '',
+    results: []
   };
 
   findArtist = (dispatch, e) => {
     
-    e.preventDefault();
     console.log(this.state)
 
     axios
-      .get(`http://127.0.0.1:8000/artist-search/?q=${this.state.Artist}`)
+      .get(`http://127.0.0.1:8000/artist-search/?q=${this.state.artist}`)
       .then(results => {
-        console.log(results)
-        this.setState({ artist: '' });
+        console.log(results.data)
+        this.setState({ results: results.data });
       })
       .catch(err => console.log(err));
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value },
+      () => 
+    this.findArtist (null, e))
   };
 
   render() {
@@ -37,64 +40,36 @@ class Search extends Component {
               <h1 className="display-6 text-center">
                 Search For An Artist
               </h1>
-              <p className="lead text-center">with Details</p>
+              {/* <p className="lead text-center"></p> */}
               <form onSubmit={this.findArtist.bind(this, dispatch)}>
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Artist name..."
-                    name="Artist"
+                    name="artist"
                     value={this.state.artist}
                     onChange={this.onChange}
                   />
                 </div>
-                <button
+                {/* <button
                   className="btn btn-primary btn-lg btn-block mb-5"
                   type="submit">
-                    Get Artist Details
-                </button>
+                    Search
+                </button> */}
+                <ul className="text-center">
+                  {this.state.results.map((artist, index) => (
+                      <h1 key={index}> {artist.fields.first_name} {artist.fields.last_name} </h1>
+                  ))}
+                </ul>
               </form>
             </div>
           );
         }}
       </Consumer>
-
-      
     );
   }
 }
 
 export default Search;
 
-// export default class SearchForm extends Component {
-  
-//   state = {
-//     searchText: ''
-//   }
-  
-//   onSearchChange = e => {
-//     this.setState({ searchText: e.target.value });
-//   }
-  
-//   handleSubmit = e => {
-//     e.preventDefault();
-//     this.props.onSearch(this.query.value);
-//     e.currentTarget.reset();
-//   }
-  
-//   render() {  
-//     return (
-//       <form className="search-form" onSubmit={this.handleSubmit} >
-//         <label className="is-hidden" htmlFor="search"></label>
-//         <input type="text" 
-//                onChange={this.onSearchChange}
-//                name="artist name" 
-//                ref={(input) => this.query = input}
-//                value={this.state.artist_name}
-//                placeholder="Search..." />
-//         <button type="submit" id="submit" className="search-button"><i className="material-icons icn-search">search</i></button>
-//       </form>      
-//     );
-//   }
-// }

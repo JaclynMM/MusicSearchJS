@@ -5,16 +5,12 @@ import Bandsintown from '../bandsintown';
 // import Album from '../bands/Album';
 
 import SearchForm from '../SearchForm';
-import ArtistResultsList from '../ArtistResultsList';
+// import ArtistResultsList from '../ArtistResultsList';
 
 // import Results from '../Results';
 
 
 const Index = () => {
-
-    state = {
-        artist: {},
-    }
 
     return (
         <React.Fragment>
@@ -23,12 +19,8 @@ const Index = () => {
             <div>
               <div className="main-header">
                 <div className="inner">
-                  <h1 className="main-title">ArtistResults</h1>
                   <SearchForm />
                 </div>
-              </div>
-              <div className="main-content">
-                <ArtistResultsList data={this.state.artists} />
               </div>
             </div>
 
