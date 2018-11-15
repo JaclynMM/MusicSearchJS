@@ -1,5 +1,6 @@
 import React from 'react';
 
+// heading title bar for all pages
 const Navbar = () => {
     return(
         <nav className="navbar navbar-dark bg-dark mb-5">

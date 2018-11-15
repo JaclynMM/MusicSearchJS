@@ -20,6 +20,8 @@ This is an application build to have a place where you can search of ausician/ar
 
 The details are pulled from a backend python project previously created. There is a separate README file within that project but I will list those same instructions below along with the information on running the React JS app you see here.
 
+This is build on a small backend database. Guaranteed artists are "Eric Clapton" "Dave Matthews" "Aaron Dessner".
+
 
 
 

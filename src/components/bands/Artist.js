@@ -40,11 +40,6 @@ class Artist extends Component {
                     )
                 }}
             </Consumer>
-            // <div>
-            //     <h1>Artist</h1>
-            //     {this.state.name}
-            // </div>
-
         );
     }
 } 

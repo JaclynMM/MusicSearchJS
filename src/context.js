@@ -31,16 +31,4 @@ export class Provider extends Component {
     
 }
 
-
-
-/**
- * fetch('http://127.0.0.1:8000/Artist', {
- *   mode: 'POST',
- *   body: JSON.stringify(this.state),
- *   headers: {
- *     'Content-Type': 'application/json'
- *   })
- * })
- */
-
 export const Consumer = Context.Consumer;

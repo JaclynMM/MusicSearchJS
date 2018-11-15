@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Consumer } from '../context';
 
 class Search extends Component {
+  //set the state
   state = {
     artist: '',
     results: []
@@ -12,6 +13,7 @@ class Search extends Component {
     
     console.log(this.state)
 
+    // searching through artists in back end api built in python
     axios
       .get(`http://127.0.0.1:8000/artist-search/?q=${this.state.artist}`)
       .then(results => {
@@ -35,12 +37,15 @@ class Search extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
+
           return (
+
+            //html for the search form
             <div className="card card-body mb-4 p-4">
               <h1 className="display-6 text-center">
                 Search For An Artist
               </h1>
-              {/* <p className="lead text-center"></p> */}
+
               <form onSubmit={this.findArtist.bind(this, dispatch)}>
                 <div className="form-group">
                   <input
@@ -52,14 +57,11 @@ class Search extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                {/* <button
-                  className="btn btn-primary btn-lg btn-block mb-5"
-                  type="submit">
-                    Search
-                </button> */}
+
+                {/* loop, pull and display results */}
                 <ul className="text-center">
                   {this.state.results.map((artist, index) => (
-                      <h1 key={index}> {artist.fields.first_name} {artist.fields.last_name} </h1>
+                      <h5 key={index}> {artist.fields.first_name} {artist.fields.last_name} </h5>
                   ))}
                 </ul>
               </form>
