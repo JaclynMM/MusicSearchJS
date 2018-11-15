@@ -4,7 +4,9 @@ import Artist from '../bands/Artist';
 import Bandsintown from '../bandsintown';
 import SearchForm from '../SearchForm';
 
+
 // Index formatting pulled into app.js
+// View the top 3 components of the app
 const Index = () => {
 
     return (

@@ -4,6 +4,7 @@ import { Consumer } from '../../context';
 import Artists from '../bands/Artists.js'
 import Axios from 'axios';
 
+
 class Artist extends Component {
     constructor(props) {
         super(props)
@@ -12,6 +13,7 @@ class Artist extends Component {
         }
     }
 
+    // search through artist database and be sure to return json
     performSearch = () => {
         Axios.get('http://127.0.0.1:8000/Artist/')
         .then( results => {
@@ -21,6 +23,7 @@ class Artist extends Component {
         })
     }
 
+    //make sure each artist in the database has an id
     render () {
         return (
             <Consumer>

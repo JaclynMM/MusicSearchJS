@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Consumer } from '../context';
 
+
 class Search extends Component {
   //set the state
   state = {
@@ -23,6 +24,7 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
+  //allow user to type and get results with each additional letter 
   onChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value },
@@ -58,7 +60,7 @@ class Search extends Component {
                   />
                 </div>
 
-                {/* loop, pull and display results */}
+                {/* loop, pull and display results in first name last name order */}
                 <ul className="text-center">
                   {this.state.results.map((artist, index) => (
                       <h5 key={index}> {artist.fields.first_name} {artist.fields.last_name} </h5>

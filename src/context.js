@@ -11,6 +11,7 @@ export class Provider extends Component {
         heading: 'Full List of Artists'
     };
 
+    //pull the artists list from the database 
     componentDidMount() {
         axios
             .get(`http://127.0.0.1:8000/Artist/`)

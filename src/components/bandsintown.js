@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { Consumer } from '../context';
+import { Link } from 'react-router-dom';
+
 
 //API hit for external site (bandsintown.com)
 class Bandsintown extends Component {
@@ -31,7 +34,7 @@ class Bandsintown extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  render() {
+  render(props) {
     return (
       <Consumer>
         {value => {
@@ -62,11 +65,25 @@ class Bandsintown extends Component {
                 </button>
 
                 {/* loop through the information and pull out certain aspects */}
-                <ul className="text-center">
-                  {this.state.results.map((artist, index) => (
-                      <h1 key={index}>  {artist.description} {artist.datetime} {artist.venue.city} </h1>
+                <div className="col-md-5 text-center mx-auto">
+                  {this.state.results.map((event, index) => (
+                      <h4 key={index}>  
+                        {/* {event.datetime}  */}
+                        {/* format the return of datetime in a readable context */}
+                        {moment(event.datetime).format("MM/DD/YYYY hh:mm a")}
+                        <br></br>
+                        {event.venue.city} 
+
+                        {/* create the custom link to the event details for each event */}
+                        <Link to={`/event_detail/${this.state.artist}/${index}`} className="btn btn-dark btn-block">
+                            <i className="fas fa-chevron-right"> Event Details </i>
+                        </Link>
+
+                        <br></br>
+                        
+                      </h4>
                   ))}
-                </ul>
+                </div>
 
               </form>
             </div>
